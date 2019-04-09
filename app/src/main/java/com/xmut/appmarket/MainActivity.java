@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
                     mTextMessage.setText(R.string.title_dashboard);
                     showNav(R.id.navigation_dashboard);
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_search:
                     mTextMessage.setText(R.string.title_notifications);
-                    showNav(R.id.navigation_notifications);
+                    showNav(R.id.navigation_search);
                     return true;
                 case R.id.navigation_My:
                     mTextMessage.setText(R.string.app_name);
@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
         beginTransaction.addToBackStack(null);//返回到上一个显示的fragment
         beginTransaction.commit();//每一个事务最后操作必须是commit（），否则看不见效果
         showNav(R.id.navigation_home);
-    }private void showNav(int navid){
+    }
+    private void showNav(int navid){
         FragmentTransaction beginTransaction=getFragmentManager().beginTransaction();
         switch (navid){
             case R.id.navigation_home:
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 beginTransaction.addToBackStack(null);
                 beginTransaction.commit();
                 break;
-            case R.id.navigation_notifications:
+            case R.id.navigation_search:
                 beginTransaction.hide(fragmentTwo).hide(fragmentOne);
                 beginTransaction.show(fragmentThree);
                 beginTransaction.addToBackStack(null);
