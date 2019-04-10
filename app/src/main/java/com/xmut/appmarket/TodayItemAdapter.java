@@ -39,6 +39,7 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.View
                 TodayItem itemClicked = itemList.get(position);
                 Toast.makeText(v.getContext(),"You Clicked item "+itemClicked.getText(),
                         Toast.LENGTH_SHORT).show();
+
             }
         });
         holder.textView.setOnClickListener(new View.OnClickListener(){

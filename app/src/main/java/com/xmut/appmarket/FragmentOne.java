@@ -27,15 +27,14 @@ public class FragmentOne extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_one,container,false);
-
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_one);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         dateText =(TextView) view.findViewById(R.id.date_message);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd EEEE");//设置日期格式
         String date = df.format(new Date());
         dateText.setText(date);
-        recyclerView.setLayoutManager(layoutManager);
 
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_one);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
         TodayItemAdapter adapter = new TodayItemAdapter(getItemList());
         recyclerView.setAdapter(adapter);
         return view;

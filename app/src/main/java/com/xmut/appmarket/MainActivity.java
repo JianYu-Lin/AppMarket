@@ -74,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
         fragmentTwo=new FragmentTwo();
         fragmentThree=new FragmentThree();
         FragmentTransaction beginTransaction=getFragmentManager().beginTransaction();
-        beginTransaction.add(R.id.content,fragmentOne).add(R.id.content,fragmentTwo).add(R.id.content,fragmentThree);//开启一个事务将fragment动态加载到组件
+        beginTransaction.add(R.id.content,fragmentOne)
+                .add(R.id.content,fragmentTwo)
+                .add(R.id.content,fragmentThree);//开启一个事务将fragment动态加载到组件
         beginTransaction.hide(fragmentOne).hide(fragmentTwo).hide(fragmentThree);//隐藏fragment
         /*beginTransaction.addToBackStack(null);*///返回到上一个显示的fragment
         beginTransaction.commit();//每一个事务最后操作必须是commit（），否则看不见效果
