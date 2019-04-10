@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
@@ -30,7 +31,25 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.View
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.today_item
         ,parent,false);
-        ViewHolder holder = new ViewHolder(view);
+        final ViewHolder holder = new ViewHolder(view);
+        holder.imageView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                int position =  holder.getAdapterPosition();
+                TodayItem itemClicked = itemList.get(position);
+                Toast.makeText(v.getContext(),"You Clicked item "+itemClicked.getText(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.textView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                int position =  holder.getAdapterPosition();
+                TodayItem itemClicked = itemList.get(position);
+                Toast.makeText(v.getContext(),"You Clicked item "+itemClicked.getText(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
         return holder;
     }
     public void onBindViewHolder(ViewHolder holder,int position) {
@@ -39,6 +58,8 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.View
         holder.imageView.setImageResource(item.getImageID());
 
         holder.textView.setText(item.getText());
+
+
     }
     public int getItemCount(){
         return itemList.size();

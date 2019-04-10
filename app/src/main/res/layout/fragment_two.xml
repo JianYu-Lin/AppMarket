@@ -6,15 +6,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#785447"
+        android:background="#FFFFFF"
         android:gravity="center">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="这是第二个页面"
+            android:text="应用列表"
             android:textSize="30dp"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:gravity="center"/>
-
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 </LinearLayout>
