@@ -35,11 +35,11 @@ public class AppListDao {
                     if(rs!=null){
                         while(rs.next()){
                             App app=new App();
-                            app.setAppID(rs.getInt("appID"));
-                            app.setAppName(rs.getString("appName"));
-                            app.setAppDownload(rs.getInt("appDownload"));
-                            app.setAppLink(rs.getString("appLink"));
-                            app.setAppPicture(rs.getString("appPicture"));
+                            app.setAppID(rs.getInt("AppID"));
+                            app.setAppName(rs.getString("AppName"));
+                            app.setAppDownload(rs.getInt("AppDownload"));
+                            app.setAppLink(rs.getString("AppLink"));
+                            app.setAppPicture(rs.getString("AppPicture"));
                             list.add(app);
                         }
                     }

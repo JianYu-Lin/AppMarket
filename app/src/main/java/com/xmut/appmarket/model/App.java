@@ -7,7 +7,7 @@ public class App {
     private String appLink;//应用链接
     private int appDownload;//下载次数
     private String appPicture;//应用图片
-    private String appIntro;
+    private String appIntro;//介绍
     public App(){
         super();
     }
