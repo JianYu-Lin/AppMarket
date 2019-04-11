@@ -30,6 +30,7 @@ import java.util.List;
 public class FragmentThree extends Fragment {
     List<App> appList;
     EditText editText;
+    TextView titleText;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class FragmentThree extends Fragment {
         HotSearchAdapter adapter = new HotSearchAdapter(getAppList());
         recyclerView.setAdapter(adapter);
         editText = view.findViewById(R.id.search_text);
+        titleText = view.findViewById(R.id.search_title);
         initListener();
 
 
@@ -56,6 +58,17 @@ public class FragmentThree extends Fragment {
     }
     private void initListener(){
         if(editText!=null){
+            //EditeText焦点状态改变事件
+            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if(hasFocus){
+                        titleText.setVisibility(View.GONE);
+                    }else{
+                        titleText.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
             editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -83,8 +96,10 @@ public class FragmentThree extends Fragment {
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 if (getActivity().getCurrentFocus() != null) {
                    imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+                   editText.clearFocus();
                 } else {
                     imm.hideSoftInputFromWindow((getActivity().findViewById(android.R.id.content)).getWindowToken(), 0);
+                    editText.clearFocus();
                 }
                 return false;
             }

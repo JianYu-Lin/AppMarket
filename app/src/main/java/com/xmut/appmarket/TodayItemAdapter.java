@@ -1,12 +1,14 @@
 package com.xmut.appmarket;
 
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,10 +20,12 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.View
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
         TextView textView;
+        CardView appTouched;
         public ViewHolder(View view){
             super(view);
             imageView = (ImageView) view.findViewById(R.id.iv);
             textView = (TextView) view.findViewById(R.id.tv);
+            appTouched = (CardView) view.findViewById(R.id.today_item);
         }
     }
     public TodayItemAdapter(List<TodayItem> list){
@@ -32,7 +36,8 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.View
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.today_item
         ,parent,false);
         final ViewHolder holder = new ViewHolder(view);
-        holder.imageView.setOnClickListener(new View.OnClickListener(){
+        //获取点击卡片事件
+        holder.appTouched.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 int position =  holder.getAdapterPosition();
@@ -42,15 +47,7 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.View
 
             }
         });
-        holder.textView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                int position =  holder.getAdapterPosition();
-                TodayItem itemClicked = itemList.get(position);
-                Toast.makeText(v.getContext(),"You Clicked item "+itemClicked.getText(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+
         return holder;
     }
     public void onBindViewHolder(ViewHolder holder,int position) {
