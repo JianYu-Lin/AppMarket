@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         init();
         //设置软键盘出现时不挤压界面
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        //设置状态栏颜色
         getWindow().setStatusBarColor(getResources().getColor(R.color.wite));
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
